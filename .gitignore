@@ -120,3 +120,15 @@ logs/
 */mnist
 *.csv
 !.dvc
+figures/log_reg_cs_exp-eps-converted-to.pdf
+slides/main.aux
+slides/main.nav
+slides/main.out
+slides/main.snm
+slides/main.synctex.gz
+slides/main.toc
+paper/main.aux
+paper/main.bbl
+paper/main.blg
+paper/main.out
+paper/main.synctex.gz
