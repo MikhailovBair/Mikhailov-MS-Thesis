@@ -117,6 +117,7 @@ logs/
 # Exclude all files which begin on .
 */.*
 .*
+
 */mnist
 *.csv
 *.aux
