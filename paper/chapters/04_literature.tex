@@ -1,0 +1,33 @@
+\chapter{Literature review}
+\section{Area of Research}
+The integration of machine learning techniques into radiological analysis has revolutionized the study of brain evolution, particularly through the examination of brain endocasts derived from computed tomography (CT) scans. This interdisciplinary approach combines paleontology, neuroanatomy, and artificial intelligence to reconstruct and analyze the neuroanatomical structures of extinct and extant species. Recent advancements have demonstrated the efficacy of deep learning models in automating the segmentation and analysis of complex biological structures from imaging data. For instance, Lösel et al. utilized micro-CT imaging coupled with deep learning to reveal natural variability in bee brain size and symmetry, highlighting the potential of such methods in neuroanatomical studies \cite{L_sel_2023}.
+
+In the realm of paleontology, Yu et al. applied deep learning for the segmentation of dinosaur fossils from CT data, showcasing the applicability of these techniques in handling fossilized remains \cite{Yu_2022}. Similarly, Knutsen and Konovalov demonstrated accelerated segmentation of fossil CT scans through deep learning, emphasizing the efficiency gains in processing paleontological data \cite{Knutsen_2024}.
+
+\section{Gaps in Current Knowledge}
+Despite these advancements, several gaps persist in the current body of knowledge:
+
+\begin{itemize}
+    \item \textbf{Ancestral Lineage Ambiguity}: The evolutionary relationships among crocodilians, particularly the ancestral lineage connections between tomistomas, gavials, crocodiles, and alligators, remain contentious. Comprehensive neuroanatomical data could provide critical insights into these phylogenetic relationships.
+    \item \textbf{Interpretability of Deep Learning Models}: While deep learning models have shown high accuracy in classification tasks, their "black-box" nature poses challenges in interpretability, which is crucial for scientific validation and understanding.
+\end{itemize}
+
+\section{Technological and Scientific Barriers}
+
+The application of machine learning in paleoneurology faces several technological and scientific barriers:
+
+\begin{itemize}
+    \item \textbf{Data Quality and Availability}: High-resolution CT scans of fossilized specimens are scarce, and the quality of available scans can vary significantly, affecting the performance of machine learning models.
+    \item \textbf{Segmentation Challenges}: Fossilized remains often present complex structures with varying degrees of preservation, making accurate segmentation a challenging task. Although models like U-Net have been employed for biomedical image segmentation \cite{Ronneberger_2015}, their application to fossil data requires further refinement.
+    \item \textbf{Model Interpretability}: Techniques such as Gradient-weighted Class Activation Mapping (Grad-CAM) have been developed to provide visual explanations for deep learning models \cite{Selvaraju_2017}, but their effectiveness in paleoneurological contexts needs further exploration.
+\end{itemize}
+
+\section{Area of Research in Light of the Project}
+
+This project aims to address the aforementioned gaps by developing machine learning methods tailored for radiological analysis in brain evolution research, with a specific focus on crocodilian species. The primary objectives include:
+
+\begin{itemize}
+    \item \textbf{Automated Segmentation}: Implementing deep learning models to automate the segmentation of brain endocasts from CT images of crocodilians, enhancing the efficiency and accuracy of neuroanatomical reconstructions.
+    \item \textbf{Classification and Phylogenetic Analysis}: Training convolutional neural networks, such as ResNet, to classify brain endocasts of crocodiles and alligators, and subsequently applying these models to tomistomas and gavials to infer phylogenetic relationships.
+    \item \textbf{Model Interpretability}: Utilizing Grad-CAM to provide visual explanations of the classification results, thereby improving the interpretability of the models and facilitating scientific validation of the findings.
+\end{itemize}

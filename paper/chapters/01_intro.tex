@@ -1,0 +1,30 @@
+%% This is an example first chapter.  You should put chapter/appendix that you
+%% write into a separate file, and add a line \include{yourfilename} to
+%% main.tex, where `yourfilename.tex' is the name of the chapter/appendix file.
+%% You can process specific files by typing their names in at the 
+%% \files=
+%% prompt when you run the file main.tex through LaTeX.
+\chapter{Introduction} 
+The evolution of neuroanatomical structures in archosaurs, particularly crocodilians, remains a pivotal yet contested topic in paleobiology. Central to this debate is the phylogenetic relationship between tomistomas, gavials, crocodiles, and alligators, which hinges on comparative analyses of brain endocasts derived from computed tomography (CT) imaging. Recent advances in machine learning (ML) have revolutionized radiological segmentation and classification tasks, offering unprecedented precision in morphological phenotyping \cite{Yu_2022}. This study leverages these innovations to resolve longstanding questions about crocodylian ancestry through quantitative analysis of endocast morphology.  
+
+\section{Current State-of-the-Art Methods}  
+Traditional approaches to endocast analysis rely on manual segmentation of CT scans, a labor-intensive process prone to observer bias and limited scalability \cite{Yu_2022}. Recent developments in deep learning, particularly convolutional neural networks (CNNs), have automated segmentation with remarkable accuracy. For instance, the U-Net architecture \cite{Ronneberger_2015}, originally designed for biomedical imaging, has been adapted for fossil segmentation, achieving Dice scores exceeding 0.95 in dinosaur cranial reconstructions \cite{Yu_2022, Knutsen_2024}. Similarly, \cite{L_sel_2023} demonstrated the efficacy of micro-CT paired with deep learning in quantifying natural variability in insect brain symmetry, highlighting the method’s applicability to neuroanatomical studies.  
+
+Despite these advancements, challenges persist. Segmenting low-contrast regions in CT scans—common in fossilized or ossified tissues—remains problematic, often requiring manual post-processing \cite{Knutsen_2024}. Furthermore, classification models like ResNet, while powerful for image recognition, lack inherent interpretability, limiting their utility in evolutionary studies where feature relevance must be biologically justified \cite{Selvaraju_2017}.  
+
+\section{Bridging ML and Evolutionary Biology}  
+The integration of explainable AI (XAI) frameworks, such as Grad-CAM \cite{Selvaraju_2017}, has begun addressing these limitations by mapping model decisions to anatomically meaningful regions. For example, \cite{Beyrand_2019} used comparative neuroanatomy to infer heterochronic shifts in flying archosaurs, underscoring the need for interpretable ML to validate such hypotheses. However, existing studies focus narrowly on segmentation or classification, neglecting phylogenetic inference through explainable feature attribution—a gap this work seeks to fill.  
+
+\section{Objective and Innovation}  
+This study introduces a hybrid pipeline combining 3D U-Net-based segmentation of crocodilian brain endocasts with ResNet-50 classification and Grad-CAM-driven interpretability. By training on a curated dataset of crocodile and alligator endocasts, research aims to:  
+\begin{itemize}  
+    \item Automate the extraction of morphometric features critical for phylogenetic discrimination,  
+    \item Classify tomistoma and gavial endocasts to test competing ancestry hypotheses,  
+    \item Identify neuroanatomical landmarks  driving taxonomic distinctions via Grad-CAM \cite{Selvaraju_2017}.  
+\end{itemize}  
+This approach not only addresses the scalability and bias issues of manual methods but also advances ML’s role in evolutionary biology by linking algorithmic decisions to paleoneurological traits.  
+
+\section{Usage of AI}
+Note: In some portions of this document (70\% - 85\% of the entire text); Artificial Intelligence assistant, particularly Generative AI, has been used to improve, rephrase, shorten, or summarize the content. The technologies used include DeepSeek-R1.
+
+

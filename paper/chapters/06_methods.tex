@@ -1,0 +1,60 @@
+\chapter{Methodology}
+
+
+\section{Brain Endocast Segmentation}  
+\label{subsec:segmentation}  
+
+\subsubsection{U-Net Architecture}  
+The segmentation of brain endocasts from 2D CT slices was performed using a 2D U-Net \cite{Ronneberger_2015}, chosen for its ability to localize fine anatomical structures through skip connections between encoder and decoder pathways. The architecture comprises:  
+\begin{itemize}  
+    \item \textbf{Encoder}: Four downsampling blocks with double \(3 \times 3\) convolutions, ReLU activation, and max-pooling.  
+    \item \textbf{Bottleneck}: Two convolutional layers with 512 filters.  
+    \item \textbf{Decoder}: Four upsampling blocks with biline and concatenation of skip features.  
+    \item \textbf{Output Layer}: \(1 \times 1\) convolution with sigmoid activation for binary segmentation.  
+\end{itemize}  
+
+\section{Loss Function and Training}  
+To address class imbalance between foreground (endocast) and background pixels, the loss function combined Dice loss and binary cross-entropy (BCE):  
+\begin{equation}  
+    \mathcal{L}_{\text{total}} = \mathcal{L}_{\text{Dice}} + \mathcal{L}_{\text{BCE}},  
+\end{equation}  
+where  
+\[  
+\mathcal{L}_{\text{Dice}} = 1 - \frac{2 \sum_{i} p_i g_i}{\sum_{i} p_i + \sum_{i} g_i}, \quad  
+\mathcal{L}_{\text{BCE}} = -\frac{1}{N} \sum_{i} \left[ g_i \log p_i + (1 - g_i) \log (1 - p_i) \right].  
+\]  
+Here, \(p_i\) and \(g_i\) denote predicted probabilities and ground-truth labels, respectively. The model was trained for 480 epochs using AdamW (\(lr = 1 \times 10^{-5}\)) with a cosine annealing scheduler to escape local minima \cite{Lundberg2017}.  
+
+\section{Data Preprocessing}  
+Each 3D CT stack was sliced into 2D axial images and preprocessed as follows:  
+\begin{itemize}  
+    \item Resizing to \(256 \times 256\) pixels to standardize input dimensions,  
+    \item Augmentation via random flips, rotations (\(-60^\circ\) to \(+60^\circ\)), and intensity scaling.  
+\end{itemize}  
+
+
+\section{ResNet Architecture}  
+For taxonomic classification, segmented endocasts will be processed using ResNet-50, a deep residual network optimized for image recognition. The model leverages residual blocks with skip connections to mitigate vanishing gradients:  
+\begin{equation}  
+    \mathbf{y} = \mathcal{F}(\mathbf{x}, \{W_i\}) + \mathbf{x},  
+\end{equation}  
+where \(\mathcal{F}\) represents residual mappings and \(\mathbf{x}\) the input features. The network will be pretrained on ImageNet and fine-tuned using:  
+\begin{itemize}  
+    \item \textbf{Input}: 2D axial slices of segmented endocasts (\(224 \times 224\)),  
+    \item \textbf{Output}: Probabilities for classes (crocodiles, alligators).  
+\end{itemize}  
+
+\section{Explainability with Grad-CAM}  
+To interpret classification decisions, Grad-CAM \cite{Selvaraju_2017} will generate heatmaps highlighting regions influencing predictions. For a target class \(c\), the activation map \(A^k\) of the \(k\)-th convolutional layer is weighted by gradient-derived importance scores \(\alpha_k^c\):  
+\begin{equation}  
+    \alpha_k^c = \frac{1}{Z} \sum_{i} \sum_{j} \frac{\partial y^c}{\partial A_{ij}^k}, \quad  
+    L_{\text{Grad-CAM}}^c = \text{ReLU}\left( \sum_{k} \alpha_k^c A^k \right).  
+\end{equation}  
+These heatmaps will be overlaid on endocast slices to identify phylogenetically informative neuroanatomical features.  
+
+\section{Expected Outcomes}  
+\begin{itemize}  
+    \item \textbf{Segmentation}: High Dice scores (\(>0.75\)) on validation data, enabling accurate 3D endocast reconstruction (Fig.~\ref{fig:seg_results}).  
+    \item \textbf{Classification}: ResNet-50 accuracy exceeding \(90\%\) in distinguishing crocodiles from alligators, with tomistomas/gavials clustering closer to crocodiles.  
+    \item \textbf{Explainability}: Grad-CAM heatmaps localizing divergent traits 
+\end{itemize}  

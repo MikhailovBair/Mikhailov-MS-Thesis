@@ -1,0 +1,33 @@
+\chapter{Discussion and conclusion}
+\section{Discussion}
+\subsection{Summary of Key Findings}
+Our study demonstrates the efficacy of machine learning in resolving phylogenetic controversies through quantitative neuroanatomical analysis. Key results include:
+\begin{itemize}
+    \item \textbf{Segmentation}: The U-Net model achieved a validation Dice score of 0.75, enabling accurate 3D reconstruction of brain endocasts from 2D CT slices (Fig.~\ref{fig::Dice}).
+\end{itemize}
+
+\subsection{Global Research Context}
+Our work bridges three critical gaps in evolutionary biology:
+\begin{enumerate}
+    \item \textbf{Automation vs. Tradition}: Unlike manual morphometric studies \cite{Beyrand_2019}, our pipeline reduces subjectivity and scales to large datasets.
+    \item \textbf{Interpretability}: While prior ML applications in paleontology focused on segmentation \cite{Yu_2022}, we integrate Grad-CAM \cite{Selvaraju_2017} to link model decisions to biological traits. (TBD)
+    \item \textbf{Phylogenetic Resolution}: The tomistoma-gavial debate has relied on DNA analysis; our neuroanatomical approach provides independent morphological evidence.
+\end{enumerate}
+
+
+\subsection{Limitations}
+\begin{itemize}
+    \item \textbf{Data Scarcity}: The dataset (29 scans) is small for deep learning; fossil specimens were excluded due to scan quality.
+    \item \textbf{2D Processing}: Analyzing 3D stacks as 2D slices may overlook volumetric relationships, though this improved computational efficiency.
+\end{itemize}
+
+\section{Conclusion}
+This study establishes machine learning as a transformative tool for evolutionary radiology. By automating endocast segmentation and classification, we achieved:
+\begin{itemize}
+    \item \textbf{Objective 1}: High-precision endocast extraction (Dice: 0.75) with minimal manual intervention.
+    \item \textbf{Objective 2}: Interpretable heatmaps linking neuroanatomy to phylogenetic divergence (TBD).
+\end{itemize}
+\newpage
+\chapter*{Acknowledgements}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+I would like to express my sincere gratitude to researchers of SPbSU Department of Vertebrate zoology Ivan Kuzmin and Evgenia Mazur for suggesting the initial project and providing the required data
