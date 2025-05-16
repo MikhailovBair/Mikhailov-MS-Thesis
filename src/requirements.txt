@@ -1,3 +1,6 @@
-numpy==1.21.5
-scipy==1.4.1
-scikit-learn==1.0.2
+numpy~=2.0.2
+torch~=2.7.0+cpu
+tqdm~=4.67.1
+torchvision~=0.22.0+cpu
+setuptools~=70.0.0
+opencv-python~=4.11.0.86

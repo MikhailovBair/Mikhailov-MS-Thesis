@@ -1,0 +1,28 @@
+\chapter{Problem statement}
+
+\section{Definitions and Notation}
+Let the following formalisms hold throughout this study:
+
+\begin{itemize}
+    \item $\mathcal{D} = \{(\mathbf{X}_i, \mathbf{Y}_i)\}_{i=1}^N$: A dataset of $N$ CT scan volumes $\mathbf{X}_i \in \mathbb{R}^{H \times W \times D}$ paired with binary segmentation masks $\mathbf{Y}_i \in \{0,1\}^{H \times W \times D}$, where $1$ denotes brain endocast voxels.
+    
+    \item $\mathcal{F}_\theta: \mathbb{R}^{256 \times 256} \rightarrow [0,1]^{256 \times 256}$: A 2D U-Net segmentation model with parameters $\theta$, mapping resized CT slices to probability maps.
+    
+    \item $\mathcal{G}_\phi: \mathbb{R}^{256 \times 256} \rightarrow \mathbb{R}^C$: A classifier with parameters $\phi$, assigning endocast slices to $C=2$ taxonomic classes (crocodiles, alligators).
+    
+    \item $\mathcal{H}: \mathbb{R}^{256 \times 256 \times K} \rightarrow \mathbb{R}^{256 \times 256}$: Grad-CAM function generating heatmaps from the $K$-th convolutional layer of $\mathcal{G}_\phi$.
+\end{itemize}
+
+\section{Research Objective}
+This study aims to develop an interpretable machine learning framework for resolving crocodylian phylogenetic controversies through quantitative analysis of brain endocast morphology. Specifically, we pursue three principal goals:
+
+\begin{enumerate}
+    \item \textbf{Precise Endocast Segmentation}: 
+    Develop a 2D segmentation model capable of segmenting brain endocasts from CT scans with a Dice score exceeding 0.75
+    
+    \item \textbf{Taxonomic Classification}: 
+    Train a classifier to distinguish between crocodile and alligator with $\geq$90\% accuracy, providing statistical evidence for their neuroanatomical relationships.
+    
+    \item \textbf{Phylogenetic Interpretation}: 
+    Utilize Grad-CAM to identify which neuroanatomical features most strongly influence classification decisions, testing the hypothesis
+\end{enumerate}

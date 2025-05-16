@@ -119,6 +119,8 @@ logs/
 .*
 */mnist
 *.csv
+*.aux
+*.toc
 !.dvc
 figures/log_reg_cs_exp-eps-converted-to.pdf
 slides/main.aux
